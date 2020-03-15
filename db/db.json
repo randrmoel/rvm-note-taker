@@ -1,1 +1,12 @@
-[{}]
+[
+  {
+    "id": "5puzn69ok7tmspji",
+    "title": "This is a note 1",
+    "text": "Some note data is now needed\n"
+  },
+  {
+    "id": "5puzn69ok7tmt5e7",
+    "title": "how about another note",
+    "text": "This is more note data.\n"
+  }
+]

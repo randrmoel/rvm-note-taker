@@ -6,7 +6,7 @@ uniqid = require("uniqid");
 
 module.exports = function(app){
     app.get("/api/notes", function(req, res){
-        res.send(data);
+        res.json(db);
     });
 
     app.post("/api/notes", function(req, res){
@@ -18,13 +18,13 @@ module.exports = function(app){
         };
         console.log(newNote);
 
-        fs.readFile("./db/db.json", "utf8", (err, data)=>{
+        fs.readFile("./db/db.json", "utf8", (err, db)=>{
             if(err) throw err;
-            const notes = JSON.parse(data);
+            const notes = JSON.parse(db);
             notes.push(newNote);
             fs.writeFile("./db/db.json", JSON.stringify(notes, null, 2), err =>{
                 if(err) throw err;
-                res.send("note added");
+                res.json(db);
                 console.log("complete: note written");
             });
         });
@@ -32,13 +32,13 @@ module.exports = function(app){
 
     app.delete("/api/notes/:id", function(req, res){
         oldID = req.params.id;
-        fs.readFile("./db/db.json", "utf8", (err, data)=>{
+        fs.readFile("./db/db.json", "utf8", (err, db)=>{
             if(err) throw err;
-            const notes = JSON.parse(data);
+            const notes = JSON.parse(db);
             const newNotes = notes.filter(note => note.id != oldID);
             fs.writeFile("./db/db.json", JSON.stringify(newNotes, null, 2), err =>{
                 if(err) throw err;
-                res.send(data);
+                res.send(db);
                 console.log("completed: note deleted");
             })
         })

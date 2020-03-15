@@ -1,8 +1,6 @@
 // Set up express
 
 var express =  require("express");
-var fs = require("fs");
-
 
 // create instance of express
 var app = express();
@@ -11,13 +9,11 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 // set up app to handle data parsing and other housekeeping
-
-
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
+app.use(express.static("public"));
 
 // set up routes, point to separate route files
-
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
