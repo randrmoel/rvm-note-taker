@@ -16,7 +16,7 @@ module.exports = function(app){
         });
     });
 
-    // Write a new node, grab a new ID form uniqid
+    // Write a new node, grab a new ID from uniqid
     app.post("/api/notes", function(req, res){
         let newID = uniqid();
         //Create the object
